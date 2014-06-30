@@ -13,6 +13,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -40,7 +42,6 @@ public class MainActivity extends Activity {
 		mGPS = new LocationTracker(this, mMap);
 
         if(mGPS.canGetLocation){
-
             double mLat=mGPS.getLatitude();
             double mLong=mGPS.getLongitude();
             LatLng position = new LatLng(mLat, mLong);
@@ -87,6 +88,7 @@ public class MainActivity extends Activity {
             //This method runs in the same thread as the UI.
             Location loc = mGPS.getLocation();
             mGPS.updateLocation(loc);
+            Log.v("Location_SELF", "Location: " + loc);
             //Do something to the UI thread here
 
         }
