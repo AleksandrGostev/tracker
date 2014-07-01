@@ -29,14 +29,14 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		//context = getApplicationContext();
 		setContentView(R.layout.activity_main);
-		mMap  = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+		/*mMap  = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		
 		mMap.getUiSettings().setZoomControlsEnabled(false);
 		mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 		/*map.setOnMapClickListener(this);
 		map.setOnMapLongClickListener(this);
 		map.setOnMarkerClickListener(this);
-		map.setOnInfoWindowClickListener(this);*/
+		map.setOnInfoWindowClickListener(this);
 		
 		
 		mGPS = new LocationTracker(this, mMap);
@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
                 TimerMethod();
             }
 
-        }, 0, 10000);
+        }, 0, 10000);*/
 		
 	}
 	
