@@ -15,6 +15,7 @@ import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public final class LocationTracker implements LocationListener {
@@ -43,6 +44,8 @@ public final class LocationTracker implements LocationListener {
 
     // Declaring a Location Manager
     protected LocationManager locationManager;
+    
+    public static Marker currentMarker;
 
     public LocationTracker(Context context, GoogleMap map) {
         this.mContext = context;
@@ -237,11 +240,15 @@ public final class LocationTracker implements LocationListener {
         Calendar c = Calendar.getInstance();
         int seconds = c.get(Calendar.SECOND);
 
-        mMap.clear();
+        //mMap.clear();
+        if(currentMarker != null) {
+        	currentMarker.remove();
+        }
+        currentMarker = mMap.addMarker(new MarkerOptions()
+        	.position(position)
+        	.title("You! Time:" + seconds));
         //Set marker on this position
-        mMap.addMarker(new MarkerOptions()
-                .position(position)
-                .title("You! Time:" + seconds)).showInfoWindow();
+        currentMarker.showInfoWindow();
         //new RequestUsers(mMap).execute("http://likeapanda.somee.com/Home/GetAllCoordinates");
     }
 
